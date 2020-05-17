@@ -15,8 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+# 注册自定义路由转换器
+from django.urls.converters import register_converter
+from converters import MobileConverter
+
+register_converter(MobileConverter,'mobile')
+
 #定义总路由
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('users.urls')),
+    path('',include('request_response.urls'))
 ]
+
+
+# 注册自定义路由转换器
+
